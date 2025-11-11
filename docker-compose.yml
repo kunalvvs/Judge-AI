@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database (Optional)
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai-judge-postgres
+    environment:
+      POSTGRES_USER: aijudge
+      POSTGRES_PASSWORD: aijudge_password
+      POSTGRES_DB: aijudge
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ai-judge-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aijudge"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis (Optional - for caching)
+  redis:
+    image: redis:7-alpine
+    container_name: ai-judge-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - ai-judge-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ai-judge-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+      - DATABASE_URL=postgresql://aijudge:aijudge_password@postgres:5432/aijudge
+      - REDIS_URL=redis://redis:6379
+      - CORS_ORIGIN=http://localhost:5173
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - backend_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - ai-judge-network
+    command: npm run dev
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ai-judge-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - ai-judge-network
+    command: npm run dev -- --host
+
+networks:
+  ai-judge-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  backend_uploads:
