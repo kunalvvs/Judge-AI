@@ -121,6 +121,137 @@ Welcome to the AI Judge project documentation! This file helps you navigate all 
 
 ---
 
+## 🚀 Deployment Documentation
+
+### 9. [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) 🚢
+**Complete step-by-step deployment guide**
+- Render backend deployment (detailed)
+- Vercel frontend deployment (detailed)
+- Post-deployment configuration
+- Environment variables setup
+- Custom domain configuration
+- Troubleshooting common issues
+- Monitoring and maintenance
+
+**Perfect for:** Deploying to production, first-time deployment
+
+---
+
+### 10. [DEPLOYMENT_CHECKLIST.md](./DEPLOYMENT_CHECKLIST.md) ✅
+**Interactive deployment checklist**
+- Pre-deployment tasks
+- Backend deployment steps
+- Frontend deployment steps
+- Post-deployment verification
+- Testing checklist
+- Maintenance tasks
+
+**Perfect for:** Step-by-step deployment tracking
+
+---
+
+### 11. [DEPLOYMENT_SUMMARY.md](./DEPLOYMENT_SUMMARY.md) 📊
+**Deployment architecture overview**
+- System architecture diagram
+- Deployment flow visualization
+- Files created for deployment
+- Required environment variables
+- Cost breakdown (free tier)
+- Security checklist
+- Common issues & solutions
+
+**Perfect for:** Understanding deployment architecture
+
+---
+
+### 12. [QUICK_DEPLOY.md](./QUICK_DEPLOY.md) ⚡
+**One-page deployment reference card**
+- Quick configuration reference
+- Essential commands
+- Environment variables list
+- Testing commands
+- Troubleshooting quick fixes
+- Platform URLs
+
+**Perfect for:** Quick reference during deployment
+
+---
+
+### 13. [DEPLOYMENT_DIAGRAMS.md](./DEPLOYMENT_DIAGRAMS.md) 📐
+**Visual deployment architecture**
+- Overall system architecture diagram
+- Deployment workflow diagram
+- Request flow visualization
+- Environment variables flow
+- File upload flow
+- Verdict generation flow
+- Security architecture
+- Scalability considerations
+
+**Perfect for:** Visual learners, presentations, understanding flows
+
+---
+
+### 14. [frontend/VERCEL_DEPLOYMENT.md](./frontend/VERCEL_DEPLOYMENT.md) 🎨
+**Vercel-specific deployment guide**
+- Frontend build configuration
+- Vercel dashboard setup
+- Environment variables for Vercel
+- Custom domain setup
+- Troubleshooting Vercel issues
+
+**Perfect for:** Frontend deployment specifics
+
+---
+
+### 15. [backend/RENDER_DEPLOYMENT.md](./backend/RENDER_DEPLOYMENT.md) ⚙️
+**Render-specific deployment guide**
+- Backend service configuration
+- Render dashboard setup
+- Environment variables for Render
+- Health check configuration
+- Monitoring and logs
+- File storage considerations
+
+**Perfect for:** Backend deployment specifics
+
+---
+
+## 🛠️ Deployment Scripts
+
+### 16. [deploy-setup.sh](./deploy-setup.sh) / [deploy-setup.bat](./deploy-setup.bat) 💻
+**Automated deployment setup scripts**
+- Git repository initialization
+- Environment file creation
+- Remote repository setup
+- Commit and push preparation
+- Next steps guidance
+
+**Action:** Run before deployment to prepare your project
+
+---
+
+### 17. [verify-deployment.sh](./verify-deployment.sh) 🧪
+**Deployment verification script**
+- Backend health check
+- Frontend accessibility test
+- Connection verification
+- Quick deployment status
+
+**Action:** Run after deployment to verify everything works
+
+---
+
+### 18. [.env.production.template](./.env.production.template) 🔐
+**Production environment variables template**
+- Backend production variables
+- Frontend production variables
+- Complete reference for both platforms
+
+**Action:** Use as reference when setting up Render/Vercel
+
+---
+
 ## 🏃 Quick Reference
 
 ### By Use Case
@@ -134,6 +265,9 @@ Welcome to the AI Judge project documentation! This file helps you navigate all 
 - **See all features** → [PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md)
 - **Find npm commands** → [NPM_COMMANDS.md](./NPM_COMMANDS.md)
 - **Check completion status** → [COMPLETION_REPORT.md](./COMPLETION_REPORT.md)
+- **Deploy to production** → [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
+- **Quick deploy reference** → [QUICK_DEPLOY.md](./QUICK_DEPLOY.md)
+- **Understand deployment architecture** → [DEPLOYMENT_DIAGRAMS.md](./DEPLOYMENT_DIAGRAMS.md)
 
 ---
 
@@ -160,10 +294,12 @@ Welcome to the AI Judge project documentation! This file helps you navigate all 
 4. Backend code: `backend/src/`
 
 #### 🚀 DevOps Engineer
-1. [README.md](./README.md) - Deployment section
-2. [ARCHITECTURE.md](./ARCHITECTURE.md) - Deployment architecture
-3. Docker files: `docker-compose.yml`, `*/Dockerfile`
-4. [NPM_COMMANDS.md](./NPM_COMMANDS.md) - Docker commands
+1. [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) - Complete deployment
+2. [DEPLOYMENT_CHECKLIST.md](./DEPLOYMENT_CHECKLIST.md) - Step-by-step
+3. [DEPLOYMENT_DIAGRAMS.md](./DEPLOYMENT_DIAGRAMS.md) - Architecture
+4. [QUICK_DEPLOY.md](./QUICK_DEPLOY.md) - Quick reference
+5. Docker files: `docker-compose.yml`, `*/Dockerfile`
+6. [NPM_COMMANDS.md](./NPM_COMMANDS.md) - Docker commands
 
 #### 🧪 QA Tester
 1. [README.md](./README.md) - Testing section
@@ -200,6 +336,9 @@ Welcome to the AI Judge project documentation! This file helps you navigate all 
 6. **[NPM_COMMANDS.md](./NPM_COMMANDS.md)** (As needed)
    - Reference for commands
 
+7. **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** (When deploying)
+   - Deploy to production
+
 Total time: ~60 minutes for complete understanding
 
 ---
@@ -235,8 +374,13 @@ Total time: ~60 minutes for complete understanding
 - [NPM_COMMANDS.md](./NPM_COMMANDS.md) - Test commands
 
 **Deployment**
-- [README.md](./README.md) - Deployment section
-- [ARCHITECTURE.md](./ARCHITECTURE.md) - Deployment architecture
+- [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) - Complete guide
+- [DEPLOYMENT_CHECKLIST.md](./DEPLOYMENT_CHECKLIST.md) - Step-by-step
+- [DEPLOYMENT_SUMMARY.md](./DEPLOYMENT_SUMMARY.md) - Overview
+- [QUICK_DEPLOY.md](./QUICK_DEPLOY.md) - Quick reference
+- [DEPLOYMENT_DIAGRAMS.md](./DEPLOYMENT_DIAGRAMS.md) - Visual guide
+- [frontend/VERCEL_DEPLOYMENT.md](./frontend/VERCEL_DEPLOYMENT.md) - Vercel
+- [backend/RENDER_DEPLOYMENT.md](./backend/RENDER_DEPLOYMENT.md) - Render
 
 **Troubleshooting**
 - [QUICKSTART.md](./QUICKSTART.md) - Common issues
@@ -315,11 +459,12 @@ Total time: ~60 minutes for complete understanding
 
 ## 📊 Documentation Stats
 
-- **Total Documents**: 8 files
-- **Total Pages**: ~50+ pages
+- **Total Documents**: 18 files
+- **Total Pages**: ~100+ pages
 - **Code Comments**: Extensive in all files
-- **Diagrams**: 10+ in ARCHITECTURE.md
+- **Diagrams**: 20+ across all docs
 - **Examples**: Throughout all docs
+- **Deployment Guides**: 7 comprehensive documents
 
 ---
 
@@ -335,6 +480,7 @@ Use this checklist when exploring the project:
 - [ ] Check PROJECT_SUMMARY.md for features
 - [ ] Configure .env.example
 - [ ] Read code comments in key files
+- [ ] Review DEPLOYMENT_GUIDE.md when ready to deploy
 
 ---
 
@@ -359,5 +505,6 @@ This documentation is designed to help you understand and use the AI Judge proje
 
 ---
 
-*Last Updated: November 11, 2025*
-*Documentation Version: 1.0.0*
+*Last Updated: November 12, 2025*
+*Documentation Version: 2.0.0*
+*Added comprehensive deployment documentation*

@@ -185,17 +185,63 @@ npm run build:backend
 
 ## 🚢 Deployment
 
-### Frontend (Vercel/Netlify)
-1. Build the frontend: `cd frontend && npm run build`
-2. Deploy the `dist` folder
-3. Set environment variable: `VITE_API_URL=<backend-url>`
+This project is optimized for deployment on **Vercel** (frontend) and **Render** (backend).
 
-### Backend (Railway/Render/Heroku)
-1. Deploy from `backend` folder
-2. Set all required environment variables
-3. Ensure upload directory persistence
+### Quick Deployment Guide
 
-### Docker Deployment
+For detailed step-by-step instructions, see:
+- **📖 [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)** - Complete deployment instructions
+- **✅ [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** - Interactive deployment checklist
+- **📊 [DEPLOYMENT_SUMMARY.md](DEPLOYMENT_SUMMARY.md)** - Architecture and overview
+
+### Frontend on Vercel
+
+**Recommended Platform**: [Vercel](https://vercel.com) - Free tier available
+
+1. **Connect your GitHub repository** to Vercel
+2. **Configure project**:
+   - Framework: Vite
+   - Root Directory: `frontend`
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+3. **Set environment variable**:
+   - `VITE_API_URL`: Your Render backend URL
+4. **Deploy** and get your live URL
+
+See [frontend/VERCEL_DEPLOYMENT.md](frontend/VERCEL_DEPLOYMENT.md) for details.
+
+### Backend on Render
+
+**Recommended Platform**: [Render](https://render.com) - Free tier available
+
+1. **Create a new Web Service** on Render
+2. **Connect your GitHub repository**
+3. **Configure service**:
+   - Build Command: `cd backend && npm install`
+   - Start Command: `cd backend && npm start`
+   - Health Check Path: `/health`
+4. **Set environment variables**:
+   - `NODE_ENV=production`
+   - `GEMINI_API_KEY=<your-key>`
+   - `SUPABASE_URL=<your-url>`
+   - `SUPABASE_ANON_KEY=<your-key>`
+   - `CORS_ORIGIN=<your-vercel-url>`
+   - More variables listed in deployment guide
+5. **Deploy** and get your API URL
+
+See [backend/RENDER_DEPLOYMENT.md](backend/RENDER_DEPLOYMENT.md) for details.
+
+### Post-Deployment
+
+After both deployments:
+1. Update `CORS_ORIGIN` on Render with your Vercel URL
+2. Update `VITE_API_URL` on Vercel with your Render URL
+3. Redeploy both services
+4. Test the live application
+
+### Alternative Deployment Options
+
+#### Docker Deployment
 ```bash
 # Build images
 docker-compose build
@@ -204,6 +250,17 @@ docker-compose build
 docker tag ai-judge-backend:latest <registry>/ai-judge-backend
 docker push <registry>/ai-judge-backend
 ```
+
+#### Other Platforms
+- **Frontend**: Netlify, GitHub Pages, AWS Amplify
+- **Backend**: Railway, Heroku, DigitalOcean App Platform
+
+### Deployment Configuration Files
+
+- **`vercel.json`** - Vercel configuration
+- **`render.yaml`** - Render service definition
+- **`.env.production.template`** - Production environment variables template
+- **`verify-deployment.sh`** - Deployment verification script
 
 ## 🛠️ Configuration
 

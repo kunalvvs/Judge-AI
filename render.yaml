@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: ai-judge-backend
+    env: node
+    region: oregon
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_API_URL
+        value: https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      - key: MAX_FILE_SIZE
+        value: 10485760
+      - key: UPLOAD_DIR
+        value: /tmp/uploads
+    healthCheckPath: /health
