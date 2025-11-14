@@ -118,7 +118,7 @@ router.get('/:caseId', async (req, res, next) => {
  */
 router.post('/:caseId/argue', [
   body('side').isIn(['A', 'B']).withMessage('Side must be A or B'),
-  body('text').notEmpty().withMessage('Argument text is required'),
+  body('text').optional().isString(),
   body('documentIds').optional().isArray()
 ], async (req, res, next) => {
   try {
@@ -131,7 +131,15 @@ router.post('/:caseId/argue', [
     }
 
     const { caseId } = req.params;
-    const { side, text, documentIds = [] } = req.body;
+    const { side, text = '', documentIds = [] } = req.body;
+    
+    // Check that either text or documents are provided
+    if (!text.trim() && documentIds.length === 0) {
+      return res.status(400).json({
+        error: 'Validation Error',
+        message: 'Either argument text or documents must be provided'
+      });
+    }
 
     const caseData = cases.get(caseId);
     if (!caseData) {
