@@ -5,7 +5,7 @@
 
 const fs = require('fs').promises;
 const path = require('path');
-const pdfParse = require('pdf-parse');
+const { PDFParse } = require('pdf-parse');
 const mammoth = require('mammoth');
 
 // ============================================================================
@@ -20,9 +20,10 @@ const mammoth = require('mammoth');
 async function parsePDF(filePath) {
   try {
     const dataBuffer = await fs.readFile(filePath);
-    const data = await pdfParse(dataBuffer);
+    const pdfParser = new PDFParse({ data: dataBuffer });
+    const result = await pdfParser.getText();
     
-    return data.text.trim();
+    return result.text.trim();
   } catch (error) {
     console.error('PDF parsing error:', error);
     throw new Error(`Failed to parse PDF: ${error.message}`);
